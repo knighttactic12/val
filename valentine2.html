@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💘</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ffd6e8, #ffeef6);
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 35px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      font-size: 2.3em;
+    }
+
+    img {
+      width: 180px;
+      border-radius: 20px;
+      margin: 15px 0;
+    }
+
+    button {
+      font-size: 1.2em;
+      padding: 12px 28px;
+      margin: 12px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #ddd;
+      position: relative;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Will you be my Valentine,<br>little cutie? 💕</h1>
+
+    <!-- Replace the image link below with ANY image you like -->
+    <img src="https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Fwww.buildabear.co.uk%2Fspring-green-frog-soft-toy%2F430856.html&ved=0CBYQjRxqFwoTCOjSsNLFypIDFQAAAAAdAAAAABAH&opi=89978449" alt="Cute Image">
+
+    <div>
+      <button id="yesBtn" onclick="yesClicked()">Yes 💘</button>
+      <button id="noBtn" onmouseover="moveNo()">No 💔</button>
+    </div>
+  </div>
+
+  <script>
+    function yesClicked() {
+      document.body.innerHTML = `
+        <div style="text-align:center; z-index:2;">
+          <h1 style="color:#ff4d6d;">YAYYY 🥰💖</h1>
+          <p style="font-size:1.6em;">You just made me the happiest Valentine 💝</p>
+        </div>
+      `;
+    }
+
+    function moveNo() {
+      const btn = document.getElementById("noBtn");
+      const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+      btn.style.position = "absolute";
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+    }
+
+    // Floating hearts
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (20 + Math.random() * 20) + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }, 400);
+  </script>
+
+</body>
+</html>
